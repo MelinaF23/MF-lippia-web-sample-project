@@ -8,6 +8,6 @@ Feature: Login
     And hace click en Log in manually
     #And coloca un email válido "alejandra.fittipaldi@gmail.com"
     #And ingresa la contraseña válida
-    #And hace click en "Log in"
+    #And hace click en "Log in" en Login
     #Then el log in es exitoso
     #And clockify redirige al usuario a su Workspace

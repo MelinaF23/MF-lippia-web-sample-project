@@ -1,8 +1,18 @@
 package lippia.web.steps;
 
-import io.cucumber.java.en.And;
-import lippia.web.services.LoginService;
+import com.crowdar.core.PageSteps;
+import io.cucumber.java.en.*;
+import lippia.web.services.HomeService;
 
-public class HomeSteps {
+public class HomeSteps extends PageSteps {
 
+    @Given("el usuario se encuentra en la Home")
+    public void elUsuarioSeEncuentraEnLaHome() {
+        HomeService.navegarWeb();
+    }
+
+    @When("hace click en Log in")
+    public void haceClickEnLogIn() {
+        HomeService.clickLogin();
+    }
 }
