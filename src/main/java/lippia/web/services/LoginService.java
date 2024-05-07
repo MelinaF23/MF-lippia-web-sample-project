@@ -1,23 +1,19 @@
 package lippia.web.services;
 
+import com.crowdar.core.PageSteps;
 import com.crowdar.core.actions.ActionManager;
 
+import com.crowdar.core.actions.WebActionManager;
 import lippia.web.constants.HomeConstants;
 
+import lippia.web.constants.LoginConstants;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class LoginService extends ActionManager {
+public class LoginService extends PageSteps {
 
-    private static WebElement stats() {
-        return getElement(HomeConstants.STATS_ID);
-    }
 
-    public static String getStats() {
-        return stats().getText();
-    }
-
-    public static void verifyResults(){
-        Assert.assertFalse(getStats().isEmpty());
+    public static void click() {
+        WebActionManager.click(LoginConstants.LOGIN_MANUALLY_BUTTON);
     }
 }
