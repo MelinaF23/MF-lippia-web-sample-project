@@ -11,4 +11,16 @@ public class LoginSteps extends PageSteps {
     public void haceClickEnLogInManually() {
         LoginService.click();
     }
+
+    @And("coloca un email válido {string}")
+    public void colocaUnEmailVálido(String email) {LoginService.enterEmail(email);
+    }
+
+    @And("ingresa la contraseña válida {string}")
+    public void ingresaLaContraseñaVálida(String password) {LoginService.enterPassword(password);
+    }
+
+    @And("hace click en Log in en la pantalla de Login")
+    public void haceClickEnLogInEnLaPantallaDeLogin() { LoginService.clickLogin();
+    }
 }

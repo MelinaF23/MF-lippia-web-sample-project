@@ -15,10 +15,22 @@ public class LoginService extends PageSteps {
 
     public static void click() {
         WebActionManager.click(LoginConstants.LOGIN_MANUALLY_BUTTON);
+    }
+
+    public static void enterEmail(String email) {
+        WebActionManager.setInput(LoginConstants.EMAIL_INPUT, email);
+    }
+
+    public static void enterPassword(String password) {
+        WebActionManager.setInput(LoginConstants.PASSWORD_INPUT, password);
+    }
+    public static void clickLogin() {
+        WebActionManager.click(LoginConstants.LOGIN_BUTTON);
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
+
 }
