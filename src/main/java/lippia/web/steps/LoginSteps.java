@@ -9,7 +9,7 @@ public class LoginSteps extends PageSteps {
     //LoginService loginService = new LoginService(); INFO DE UNA CONSULTA
     @And("hace click en Log in manually")
     public void haceClickEnLogInManually() {
-        LoginService.click();
+        LoginService.click(); // Cambiar para que no quede generico
     }
 
     @And("coloca un email válido {string}")

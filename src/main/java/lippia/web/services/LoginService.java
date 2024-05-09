@@ -26,11 +26,6 @@ public class LoginService extends PageSteps {
     }
     public static void clickLogin() {
         WebActionManager.click(LoginConstants.LOGIN_BUTTON);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 }

@@ -10,4 +10,4 @@ Feature: Login
     And ingresa la contraseña válida "123123"
     And hace click en Log in en la pantalla de Login
     Then el log in es exitoso
-    #And clockify redirige al usuario a su Workspace
+    And clockify redirige al usuario a su Workspace
