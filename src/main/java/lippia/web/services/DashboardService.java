@@ -10,10 +10,10 @@ import java.sql.DriverManager;
 
 public class DashboardService {
     public static boolean dashboardPage() {
-        //String currentUrl = PropertyManager.getProperty("web.dashboard.url");
-        String currentUrl = DriverManager.getDriverInstance().getCurrentUrl();
+        String currentUrl = PropertyManager.getProperty("web.dashboard.url");
+        //String currentUrl = DriverManager.getDriverInstance().getCurrentUrl();
         return currentUrl.contains("tracker");
-        
+
     }
 
     //public static boolean seeElement() {
