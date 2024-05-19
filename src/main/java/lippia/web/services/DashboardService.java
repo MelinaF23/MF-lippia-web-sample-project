@@ -19,4 +19,5 @@ public class DashboardService {
     //public static boolean seeElement() {
     //    ActionManager.isEnabled(DashboardConstants.HOST_BUTTON);
     //}
+
 }
