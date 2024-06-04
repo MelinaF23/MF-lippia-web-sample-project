@@ -13,19 +13,27 @@ import org.testng.Assert;
 public class LoginService extends PageSteps {
 
 
-    public static void click() {
+    public static void clickLogInManually() {
+
         WebActionManager.click(LoginConstants.LOGIN_MANUALLY_BUTTON);
     }
 
-    public static void enterEmail(String email) {
+    public static void setEmail(String email) {
+
         WebActionManager.setInput(LoginConstants.EMAIL_INPUT, email);
     }
 
-    public static void enterPassword(String password) {
+    public static void setPassword(String password) {
+
         WebActionManager.setInput(LoginConstants.PASSWORD_INPUT, password);
     }
     public static void clickLogin() {
+
         WebActionManager.click(LoginConstants.LOGIN_BUTTON);
     }
 
+    public static void clickContinue() {
+
+        WebActionManager.click(LoginConstants.CONTINUE_BUTTON);
+    }
 }
