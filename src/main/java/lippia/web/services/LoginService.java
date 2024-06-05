@@ -36,4 +36,8 @@ public class LoginService extends PageSteps {
 
         WebActionManager.click(LoginConstants.CONTINUE_BUTTON);
     }
+
+    public static void clickGoogle() {
+        WebActionManager.click(LoginConstants.GOOGLE_BUTTON);
+    }
 }

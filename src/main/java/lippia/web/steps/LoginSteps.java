@@ -27,8 +27,14 @@ public class LoginSteps extends PageSteps {
         LoginService.clickLogin();
     }
 
-    @And("hace click en {string}")
+    @And("hace click en CONTINUE WITH EMAIL")
     public void haceClickEn() {
         LoginService.clickContinue();
     }
+
+    @And("hace click en Continue with Google")
+    public void haceClickEnContinueWithGoogle() {
+        LoginService.clickGoogle();
+    }
+
 }
