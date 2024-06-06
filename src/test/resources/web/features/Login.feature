@@ -11,11 +11,11 @@ Feature: Login
     And hace click en Log in en la pantalla de Login
     Then el log in es exitoso
 
-  @loginFallido
+  @loginFallido @do
   Scenario: Log in fallido con email al ingresar un verification code inválido
     Given el usuario se encuentra en la Home
     When hace click en Log in
-    And coloca un email válido "pruebadepruebamelina@yopmail.com"
+    And coloca un email válido "academyc20244@yopmail.com"
     And hace click en CONTINUE WITH EMAIL
     And ingresa el verification code inválido "123123"
     Then el usuario visualiza el mensaje: "That code isn't valid. Please try again."
@@ -26,5 +26,5 @@ Feature: Login
     When hace click en Log in
     And hace click en Continue with Google
     And coloca un email inválido "alejandra.fittipaldi@"
-    #And hace click en Siguiente
-    #Then el usuario visualiza el mensaje: "Ingresa un número de telefono o correo electrónico válidos"
+    And hace click en Siguiente
+    Then el usuario visualiza el mensaje: "Introduce una dirección de correo electrónico o un número de teléfono válidos"

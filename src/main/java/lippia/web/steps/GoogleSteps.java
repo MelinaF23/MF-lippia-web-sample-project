@@ -15,6 +15,7 @@ public class GoogleSteps {
 
     @And("hace click en Siguiente")
     public void haceClickEnSiguiente() {
+        GoogleService.clickSiguente();
     }
 
 }

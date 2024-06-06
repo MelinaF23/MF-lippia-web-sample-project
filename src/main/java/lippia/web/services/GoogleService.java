@@ -5,6 +5,10 @@ import lippia.web.constants.GoogleConstants;
 
 public class GoogleService {
     public static void setEmail(String email) {
-        WebActionManager.click(GoogleConstants.EMAIL_INPUT, email);
+        WebActionManager.setInput(GoogleConstants.EMAIL_INPUT, email);
+    }
+
+    public static void clickSiguente() {
+        WebActionManager.click(GoogleConstants.SIGUIENTE_BUTTON);
     }
 }

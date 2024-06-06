@@ -12,14 +12,13 @@ public class EnterCodeService {
         WebActionManager.setInput(EnterCodeConstants.CODE_BUTTON, code);
         WebActionManager.waitVisibilities(EnterCodeConstants.CODE_BUTTON);
         List<WebElement> el = WebActionManager.getElements(EnterCodeConstants.CODE_BUTTON);
-        //el.stream().forEach(k -> k.sendKeys());
         for (int i = 0; i < el.size(); i++) {
             el.get(i).sendKeys(String.valueOf(code.charAt(i)));
         }
     }
 
     public static boolean checkMessage(String message) {
-        String actualMessage = WebActionManager.getText(EnterCodeConstants.CODE_MESSAGE);
+        String actualMessage = WebActionManager.getText(EnterCodeConstants.SEARCH_MESSAGE_BY_TEXT, message);
         return actualMessage.contains(message);
     }
 }
