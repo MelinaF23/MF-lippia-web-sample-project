@@ -25,6 +25,6 @@ Feature: Login
     Given el usuario se encuentra en la Home
     When hace click en Log in
     And hace click en Continue with Google
-    And coloca un email inválido "alejandra.fittipald@"
+    And coloca un email inválido "alejandra.fittipaldi@"
     And hace click en Siguiente
     Then el usuario visualiza el mensaje: "Introduce una dirección de correo electrónico o un número de teléfono válidos"
