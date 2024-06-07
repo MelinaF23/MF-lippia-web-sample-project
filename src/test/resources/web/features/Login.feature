@@ -11,7 +11,7 @@ Feature: Login
     And hace click en Log in en la pantalla de Login
     Then el log in es exitoso
 
-  @loginFallido @do
+  @loginFallido
   Scenario: Log in fallido con email al ingresar un verification code inválido
     Given el usuario se encuentra en la Home
     When hace click en Log in

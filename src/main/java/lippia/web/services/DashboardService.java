@@ -12,4 +12,8 @@ public class DashboardService {
         String currentUrl = DriverManager.getDriverInstance().getCurrentUrl();
         return currentUrl.contains("tracker");
     }
+
+    public static void clickIcono() {
+        WebActionManager.click(DashboardConstants.MANUAL_ICONO);
+    }
 }
