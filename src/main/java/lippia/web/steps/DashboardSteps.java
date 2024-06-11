@@ -1,22 +1,14 @@
 package lippia.web.steps;
 
 import com.crowdar.core.PageSteps;
-import com.crowdar.core.actions.WebActionManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import lippia.web.constants.DashboardConstants;
 import lippia.web.services.DashboardService;
 import org.testng.Assert;
 
 public class DashboardSteps extends PageSteps {
-
-    @Then("el log in es exitoso")
-    public void elLogInEsExitoso() {
-        boolean isSuccessful = DashboardService.dashboardPage();
-        Assert.assertTrue(isSuccessful, "El login no fue exitoso");
-    }
     @And("se encuentra en la seccion Tracker")
     public void seEncuentraEnLaSeccionTracker() {
         boolean isSuccessful = DashboardService.dashboardPage();
@@ -26,6 +18,7 @@ public class DashboardSteps extends PageSteps {
     public void haceClickEnElIconoManualM() {
         DashboardService.clickIconoManual();
     }
+
     @And("ingresa el texto {} y el momento actual en el Campo de Texto")
     public void ingresaElTextoYElMomentoActualEnElCampoDeTexto(String texto) {
         DashboardService.setText(texto);
@@ -54,12 +47,11 @@ public class DashboardSteps extends PageSteps {
     public void haceClickEnElIconoCalendario() {
         DashboardService.clickIconoCalendario();
     }
-    @Then("se genera el registro de horas trabajadas exitosamente con el nombre del proyecto {}")
-    public void seGeneraElRegistroDeHorasTrabajadasExitosamenteConElNombreDelProyecto(String texto) {
-        boolean isSuccessful = DashboardService.checkTracker(texto);
-        Assert.assertTrue(isSuccessful, "El registro no fue exitoso");
-    }
 
+    @Then("el usuario visualiza el mensaje de verificacion {string}")
+    public void elUsuarioVisualizaElMensajeDeVerificacion(String mensaje) {
+        DashboardService.viewMessage(mensaje);
+    }
     @When("hace click en el icono Timer \\(n)")
     public void haceClickEnElIconoTimerN() {
         DashboardService.clickIconoTimer();
@@ -84,10 +76,14 @@ public class DashboardSteps extends PageSteps {
     public void haceClickEnElBotonDISCARD() {
         DashboardService.clickButtonDiscard();
     }
-    @Then("el registro se descarta exitosamente")
-    public void elRegistroSeDescartaExitosamente() {
-        boolean isSuccessful = DashboardService.checkStart();
-        Assert.assertTrue(isSuccessful, "El registro fue exitoso");
+
+    @Then("Se visualiza el boton START nuevamente")
+    public void seVisualizaElBotonSTARTNuevamente() {
+        DashboardService.viewStart();
+    }
+    @And("el usuario visualiza el mensaje {string}")
+    public void elUsuarioVisualizaElMensaje(String mensaje) {
+        DashboardService.viewMessageCancelled(mensaje);
     }
 
     @Given("existe un registro recientemente creado con datos seteados")
@@ -144,5 +140,10 @@ public class DashboardSteps extends PageSteps {
     @And("click en el icono Calendario")
     public void clickEnElIconoCalendario() {
         DashboardService.clickCalendario();
+    }
+
+    @Then("el usuario visualiza las modificaciones {}, {}, {}, {} y {} exitosamente")
+    public void elUsuarioVisualizaLasModificacionesYExitosamente(String texto, String proyecto, String tag, String inicio, String finalizacion) {
+        DashboardService.verifyModificaciones(texto, proyecto, tag, inicio, finalizacion);
     }
 }

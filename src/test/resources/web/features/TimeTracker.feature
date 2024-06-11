@@ -5,7 +5,7 @@ Feature: Time Tracker
     Given el usuario ingreso a Clockify con un mail y contrasenia validos
     And se encuentra en la seccion Tracker
   
-  @smoke @registroExitoso
+  @smoke @registroExitoso @do
   Scenario Outline: Registro exitoso de horas trabajadas
     When hace click en el icono Manual (m)
     And ingresa el texto <texto> y el momento actual en el Campo de Texto
@@ -16,11 +16,11 @@ Feature: Time Tracker
     And hace click en el icono Calendario
     #And selecciona el dia actual
     And hace click en el boton ADD
-    Then se genera el registro de horas trabajadas exitosamente con el nombre del proyecto <texto>
+    Then el usuario visualiza el mensaje de verificacion "Time entry has been created"
 
     Examples:
-      | texto | proyecto    | inicio | finalizacion |
-      | ROO   | Hamburguesa | 2230   | 2330         |
+      | texto   | proyecto    | inicio | finalizacion |
+      | Lechuga | Hamburguesa | 2230   | 2330         |
 
   @registroDescartado
   Scenario Outline: Descarte exitoso de registro de horas trabajadas
@@ -32,13 +32,14 @@ Feature: Time Tracker
     And hace click en el menu hamburguesa
     And hace click en Discard
     And hace click en el boton DISCARD
-	Then el registro se descarta exitosamente
+    Then Se visualiza el boton START nuevamente
+    And el usuario visualiza el mensaje "Timer cancelled"
 
     Examples:
       | texto  | proyecto    |
       | Prueba | Hamburguesa |
 
-  @smoke @do
+  @smoke
   Scenario Outline: Modificacion exitosa de un registro
     Given existe un registro recientemente creado con datos seteados
     When edita el texto <texto> y el momento actual en el Campo Add description
@@ -52,8 +53,8 @@ Feature: Time Tracker
 	And ingresar hora de Finalizacion <finalizacion>
 	And click en el icono Calendario
     #And seleccionar el dia previo al actual
-    #Then el usuario visualiza las modificaciones seteadas exitosamente
+    Then el usuario visualiza las modificaciones <texto>, <proyecto>, <tag>, <inicio> y <finalizacion> exitosamente
 
     Examples:
-      | texto  |  | proyecto | tag  | inicio | finalizacion |  |
-      | AYAYAY |  | IntelliJ | 2024 | 1022   | 1145         |  |
+      | texto        |  | proyecto | tag  | inicio | finalizacion |  |
+      | EntregaFinal |  | IntelliJ | 2024 | 1022   | 1145         |  |

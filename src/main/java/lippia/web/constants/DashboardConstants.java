@@ -11,7 +11,8 @@ public class DashboardConstants {
     public static final String FINAL_TIME_INPUT = "xpath:/html/body/app-root/default-layout/div[1]/main/div/tracker2/div/div/div/time-tracker-recorder/div/div/div/div[2]/div/single-date-picker2/div[1]/input-time-ampm[2]/input";
     public static final String ADD_BUTTON = "xpath://time-tracker-recorder//app-button[1]//button";
     public static final String CALENDAR_ICONO = "xpath:(//div[contains(@class, 'recorder-date-picker')])[1]/input-single-date";
-    public static final String TRACKER_CONTAINER = "xpath://div[@class='cl-form-control cl-fake-input']";
+
+    public static final String MESSAGE_TOAST = "xpath:/html/body/div[3]/div";
     public static final String TIMER_ICONO = "xpath://a[@data-cy='timer-mode' and contains(@class, 'cl-timetracker-switch')]";
     public static final String START_BUTTON = "xpath://button[@class='cl-btn cl-btn-primary cl-d-none cl-d-lg-custom-block' and text()=' Start ']";
     public static final String MENU_ICONO = "xpath://*[@id=\"layout-main\"]/div/tracker2/div/div/div/time-tracker-recorder/div/div/div/div[2]/div/stopwatch/div[3]/div";

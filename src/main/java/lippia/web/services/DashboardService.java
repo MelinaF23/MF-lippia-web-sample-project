@@ -3,11 +3,11 @@ package lippia.web.services;
 import com.crowdar.core.actions.ActionManager;
 import com.crowdar.core.actions.WebActionManager;
 import com.crowdar.driver.DriverManager;
-import io.appium.java_client.android.nativekey.PressesKey;
 import lippia.web.constants.DashboardConstants;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 public class DashboardService {
     public static boolean dashboardPage() {
@@ -55,17 +55,11 @@ public class DashboardService {
         WebActionManager.click(DashboardConstants.ADD_BUTTON);
     }
 
-    public static boolean checkTracker(String texto) {
-        String escapedTexto = texto.replace("'", "\\'");
-        String xpathExpression = "xpath://div[@class='cl-form-control cl-fake-input' and contains(text(), \"" + escapedTexto + "\")]";
-        String generateProject = WebActionManager.getText(xpathExpression);
-        if (generateProject == null) {
-            return false;
-        }
-
-        return generateProject.contains(texto);
+    public static void viewMessage(String mensaje) {
+        WebActionManager.waitVisibilities(DashboardConstants.MESSAGE_TOAST);
+        String mensajeActual = WebActionManager.getText(DashboardConstants.MESSAGE_TOAST);
+        Assert.assertTrue(mensajeActual.contains(mensaje));
     }
-
     public static void clickIconoTimer() {
         WebActionManager.waitVisibility(DashboardConstants.TIMER_ICONO);
         WebActionManager.click(DashboardConstants.TIMER_ICONO);
@@ -90,10 +84,14 @@ public class DashboardService {
         WebActionManager.click(DashboardConstants.DISCARD_BUTTON);
     }
 
-    public static boolean checkStart() {
-        WebActionManager.waitVisibility(DashboardConstants.START_BUTTON);
-        ActionManager.waitClickable(DashboardConstants.START_BUTTON);
-        return true;
+    public static void viewStart() {
+        boolean isVisible = WebActionManager.isVisible(DashboardConstants.START_BUTTON);
+        Assert.assertTrue(isVisible, "El boton START no es visible" );
+    }
+    public static void viewMessageCancelled(String mensaje) {
+        WebActionManager.waitVisibilities(DashboardConstants.MESSAGE_TOAST);
+        String mensajeCancelled = WebActionManager.getText(DashboardConstants.MESSAGE_TOAST);
+        Assert.assertTrue(mensajeCancelled.contains(mensaje));
     }
 
     public static boolean checkRegistro() {
@@ -157,5 +155,24 @@ public class DashboardService {
 
     public static void clickCalendario() {
         WebActionManager.click(DashboardConstants.EDIT_CALENDAR_ICONO);
+    }
+
+    public static void verifyModificaciones(String texto, String proyecto, String tag, String inicio, String finalizacion) {
+
+        String actualTexto = WebActionManager.getText(DashboardConstants.ADD_DESCRIPTION_INPUT);
+        Assert.assertTrue(actualTexto.contains(texto),"La descripcion no coincide");
+
+        String actualProyecto = WebActionManager.getText(DashboardConstants.EDIT_PROJECT_LABEL);
+        Assert.assertTrue(actualProyecto.contains(proyecto),"El proyecto no coincide");
+
+        String actualTag = WebActionManager.getText(DashboardConstants.TAG_ICON);
+        Assert.assertTrue(actualTag.contains(tag),"El tag no coincide");
+
+        String actualInicio = WebActionManager.getText(DashboardConstants.EDIT_INITIAL_TIME_INPUT);
+        Assert.assertTrue(actualInicio.contains(inicio),"La hora de inicio no coincide");
+
+        String actualFinalizacion = WebActionManager.getText(DashboardConstants.EDIT_FINAL_TIME_INPUT);
+        Assert.assertTrue(actualFinalizacion.contains(finalizacion),"La hora de finalizacion no coincide");
+
     }
 }
