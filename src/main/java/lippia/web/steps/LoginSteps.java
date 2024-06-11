@@ -7,7 +7,6 @@ import lippia.web.services.LoginService;
 
 public class LoginSteps extends PageSteps {
 
-    //LoginService loginService = new LoginService(); INFO DE UNA CONSULTA
     @And("hace click en Log in manually")
     public void haceClickEnLogInManually() {
         LoginService.clickLogInManually();
@@ -38,10 +37,10 @@ public class LoginSteps extends PageSteps {
         LoginService.clickGoogle();
     }
 
-    @Given("el usuario ingresó a Clockify con un mail y contraseña válidos")
-    public void elUsuarioIngresóAClockifyConUnMailYContraseñaVálidos(String email, String password) {
-        //String email = "pruebadepruebamelina@yopmail.com";
-        //String password = "123123";
+    @Given("el usuario ingreso a Clockify con un mail y contrasenia validos")
+    public void elUsuarioIngresoAClockifyConUnMailYContraseniaValidos() {
+        String email = "pruebadepruebamelina@yopmail.com";
+        String password = "123123";
         HomeService.navegarWeb();
         HomeService.clickLogin();
         LoginService.clickLogInManually();
