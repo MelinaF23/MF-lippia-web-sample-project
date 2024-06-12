@@ -5,7 +5,7 @@ Feature: Time Tracker
     Given el usuario ingreso a Clockify con un mail y contrasenia validos
     And se encuentra en la seccion Tracker
   
-  @smoke @registroExitoso @do
+  @smoke @registroExitoso
   Scenario Outline: Registro exitoso de horas trabajadas
     When hace click en el icono Manual (m)
     And ingresa el texto <texto> y el momento actual en el Campo de Texto
@@ -56,5 +56,5 @@ Feature: Time Tracker
     Then el usuario visualiza las modificaciones <texto>, <proyecto>, <tag>, <inicio> y <finalizacion> exitosamente
 
     Examples:
-      | texto        |  | proyecto | tag  | inicio | finalizacion |  |
-      | EntregaFinal |  | IntelliJ | 2024 | 1022   | 1145         |  |
+      | texto         | proyecto | tag  | inicio | finalizacion |
+      | Entrega Final | IntelliJ | 2024 | 1022   | 1145         |

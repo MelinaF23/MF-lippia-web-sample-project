@@ -157,22 +157,15 @@ public class DashboardService {
         WebActionManager.click(DashboardConstants.EDIT_CALENDAR_ICONO);
     }
 
-    public static void verifyModificaciones(String texto, String proyecto, String tag, String inicio, String finalizacion) {
+    public static boolean verifyModificaciones(String texto, String proyecto, String tag, String inicio, String finalizacion) {
+        return checkContains(WebActionManager.getText(DashboardConstants.ADD_DESCRIPTION_INPUT), texto) &&
+                checkContains(WebActionManager.getText(DashboardConstants.EDIT_PROJECT_LABEL), proyecto) &&
+                checkContains(WebActionManager.getText(DashboardConstants.TAG_ICON), tag) &&
+                checkContains(WebActionManager.getText(DashboardConstants.EDIT_INITIAL_TIME_INPUT), inicio) &&
+                checkContains(WebActionManager.getText(DashboardConstants.EDIT_FINAL_TIME_INPUT), finalizacion);
+    }
 
-        String actualTexto = WebActionManager.getText(DashboardConstants.ADD_DESCRIPTION_INPUT);
-        Assert.assertTrue(actualTexto.contains(texto),"La descripcion no coincide");
-
-        String actualProyecto = WebActionManager.getText(DashboardConstants.EDIT_PROJECT_LABEL);
-        Assert.assertTrue(actualProyecto.contains(proyecto),"El proyecto no coincide");
-
-        String actualTag = WebActionManager.getText(DashboardConstants.TAG_ICON);
-        Assert.assertTrue(actualTag.contains(tag),"El tag no coincide");
-
-        String actualInicio = WebActionManager.getText(DashboardConstants.EDIT_INITIAL_TIME_INPUT);
-        Assert.assertTrue(actualInicio.contains(inicio),"La hora de inicio no coincide");
-
-        String actualFinalizacion = WebActionManager.getText(DashboardConstants.EDIT_FINAL_TIME_INPUT);
-        Assert.assertTrue(actualFinalizacion.contains(finalizacion),"La hora de finalizacion no coincide");
-
+    private static boolean checkContains(String actual, String expected) {
+        return actual != null && actual.contains(expected);
     }
 }
